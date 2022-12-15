@@ -4,4 +4,4 @@ All the projects and assignements of First Semester Design and Analysis of Algor
 
 ## Contents:
 ---
-1. [Practice 1-B.](/Practice%201.b/README.md) - Practice and Analyse Sorting Algorithms like `Insertion Sort`.
+1. [Practice 1-B.](/Practice%201.b/) - Practice and Analyse Sorting Algorithms like `Insertion Sort`.

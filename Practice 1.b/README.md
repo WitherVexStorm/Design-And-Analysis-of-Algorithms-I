@@ -1,6 +1,6 @@
 # Practice 1-B
 
-[Back to root folder](/README.md)
+[Back to root folder](/)
 ## About
 ---
 Programming assignment in C++ to analyse performance of sorting algorithms like `Insertion Sort`.
