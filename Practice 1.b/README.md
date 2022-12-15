@@ -21,7 +21,7 @@ output: Sorted array; A[1] ≤ A[2] ≤ ..... ≤ A[n]
 3 end
 ```
 1. What are the possible locations that `A[i]` may take in the `ith` iteration?
-
+![](./answers.svg.drawio)
 2. What is the number of comparisons performed by `Insertion Sort` to insert `A[i]` in location `j`. Give your answer in terms of `i` and `j`.
 3. Run Insert(A[1...i − 1], i) for `i` = 4 for all possible permutations of 1, 2, 3,
 4. For every `j` = 1, 4, list down the instances (the permutations) in which `A[i]` is inserted at the `jth` location. What do you observe? Now argue: the probability that `A[i]` will be inserted at the `jth` location is 1/`i`.
