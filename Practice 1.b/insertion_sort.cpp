@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 int insertion_algorithm(int arr[], int i) {
     int element = arr[i], j = i-1;
@@ -90,6 +91,7 @@ int main() {
         int i_val;
         element_to_permutations permutations[arr_length];
         int final_count_at_j[arr_length] = { 0 };
+        float final_probabilities_at_j[arr_length] = { 0 };
         int comparisons_to_insert_at_j[arr_length] = { 0 };
         int total_comparisons = 0;
     } array_element_permutations_arr[arr_length];
@@ -144,7 +146,7 @@ int main() {
                 std::cout << "\b\b }\n";
             }
         }
-        // To calculate probability of a[i] being inserted at jth location for each permutation for each a[i] for each index 1 = 1...4
+        // To calculate instances of a[i] being inserted at jth location for each permutation for each a[i] for each index 1 = 1...4
         std::cout << "\nFinal counts for j:\n";
         for(int j = 0; j < arr_length; ++j) {
             std::cout << "For j = " << j << ": " << array_element_permutations_arr[i].final_count_at_j[j] << "\n";
@@ -163,6 +165,22 @@ int main() {
     std::cout << "\nAverage Comparisons for i:";
     for(int i = 0; i < arr_length; ++i) {
         std::cout << "\nFor i = " << i << ": " << array_element_permutations_arr[i].total_comparisons * 1.0 / total_permutations;
+    }
+
+    
+    // To calculate final probability table of a[i] being inserted at jth location for each permutation for each a[i] for each index 1 = 1...4
+    std::cout << "\n\nFinal probabilities for j:\n\n" << std::left
+        << std::setw(26) << "| A[i] is inserted at j" 
+        << std::setw(12) << "| j = 0"
+        << std::setw(12) << "| j = 1"
+        << std::setw(12) << "| j = 2"
+        << std::setw(12) << "| j = 3";
+    for(int i = 0; i < arr_length; ++i) {
+        std::cout << "\n| i = " << std::setw(20) << i;
+        for(int j = 0; j < arr_length; ++j) {
+            array_element_permutations_arr[i].final_probabilities_at_j[j] = array_element_permutations_arr[i].final_count_at_j[j] * 1.0 / total_permutations;
+            std::cout << "| " << std::setw(10) << array_element_permutations_arr[i].final_probabilities_at_j[j];
+        }
     }
 
     // Delete dynamic memory
