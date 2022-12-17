@@ -1,0 +1,47 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="411px" height="191px" viewBox="-0.5 -0.5 411 191" content="&lt;mxfile&gt;&lt;diagram id=&quot;PxZnbmLKdSRGRxMwDKAL&quot; name=&quot;Page-1&quot;&gt;rVVNk9owDP01mWkPu0MSoNsjhKV76YlDzyYWiVvHSh1ngf31lWIHSAMt3ekp8tPHk2RZidKsOnyxoi6/ogQdJRN5iNJVlCRxMp3Th5GjR2aTJw8UVslgdAY26g0COAloqyQ0A0OHqJ2qh2COxkDuBpiwFvdDsx3qIWstChgBm1zoMfpNSVd69Gk2OeMvoIqyZ44nQVOJ3jgATSkk7i+g9DlKM4vovFQdMtDcvL4v3m99Q3tKzIJx9zgk3uFV6DbUFvJyx75YSrFmEQ4UcSmx3XaamA4WWyNBhtO+VA42tchZvaebJ6x0lQ7qwATWweFmtvGpBzQ8gBU4eyST4PDwqW9xGJwkDef9+Rqm/ZSUl1fwOYAiXH1xCn7uDgmhQdeblY6atWiYG3jUhOG2Acs7ixWPZMkHscVX/mLr6tZFCbFQKnPNzdxakgqW1miZiHUcmOeFDUXHn0xZjGZLFc1W3QhzQGUa7qVkwLHL49/Dxpdh/xQRfrZkdOw6S40lT64cRF6e6FgwbBvfQZy8m/hpzJv5SgJ9cgd9+m76+U36zJcVskivZDFGXsDQ6+hcoaqVVblny07jUlvciq3SynESuOsI2FxDxa9kkP6YYAvKFFeG43tXjMZcOIXGj2Mfn9tUY9OojlYBz7SiZ7IYh6ey12z+QTRNW3mq+EHREjiA/Pg42h3OL42LLSC0KgzJORUDlgBeCNyGRVBUSkp2X1po1Jvwy4aucVmjMq57vbMll0+xWoeN/zlw6MZZ/AEZarr8dGXQcJSd0vo36L8somQ2XETz8SJK59cWUfrvi4iO5z9Cp7v4r6bPvwA=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="410" height="190" rx="28.5" ry="28.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <rect x="2" y="2" width="406" height="186" rx="27.9" ry="27.9" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <rect x="25" y="30" width="360" height="130" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 95px; margin-left: 205px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
+                                As we can see from the above output,
+                                <br/>
+                                For i = 0, all 24 a[i] are inserted at 0.
+                                <br/>
+                                For i = 1, all a[i] are inserted equally with 12 each at 0 and 1.
+                                <br/>
+                                For i = 2, all a[i] are inserted equally with 8 each at 0, 1 and 2.
+                                <br/>
+                                For i = 3, all a[i] are inserted equally with 6 each at 0, 1, 2 and 3.
+                                <br/>
+                                <br/>
+                                Hence, empirically, the probability of an element a[i]
+                                <br/>
+                                being inserted at jth location out of i possibilities is:
+                                <br/>
+                                1/i (assuming 1-indexed).
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="205" y="99" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    As we can see from the above output,...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>

@@ -28,10 +28,17 @@ output: Sorted array; A[1] ≤ A[2] ≤ ..... ≤ A[n]
 
 ![](answer2.drawio.svg)
 
-3. Run Insert(A[1...i − 1], i) for `i` = 1 ... 4 for all possible permutations of 1, 2, 3, 4. For every `j` = 1 ... 4, list down the instances (the permutations) in which `A[i]` is inserted at the `jth` location. What do you observe? Now argue: the probability that `A[i]` will be inserted at the `jth` location is 1/`i`.
+3. Run Insert(A[1...i − 1], i) for `i` = 1 ... 4 for all possible permutations of 1, 2, 3, 4. 
+
+![](permutations.drawio.svg)
+
+For every `j` = 1 ... 4, list down the instances (the permutations) in which `A[i]` is inserted at the `jth` location. What do you observe? Now argue: the probability that `A[i]` will be inserted at the `jth` location is 1/`i`.
+
+![](probabilities.drawio.svg)
+![](answer3.drawio.svg)
   - a) For every `i` = 1, 4, Compute the average/expected number of comparisons performed by `Insertion Sort` to insert `A[i]`. Average is taken over all possible permutations.
-  - b) For every `i` = 1, 4, compute the probability that in the `ith` iteration, `A[i]` will be inserted in the `jth` location `j` = 1 . . .?
+  - b) For every `i` = 1, 4, compute the probability that in the `ith` iteration, `A[i]` will be inserted in the `jth` location `j` = 1 ... 4?
   Make a 2d table `P` with `i` at the rows and `j` at the columns where `P[i, j]` stores the above probability.
 
   - c) Repeat part (a) using the probabilities computed in part (b).
-4. Consider a random input sequence. What is the probability that in the `ith` iteration, `A[i]` will be inserted in the `jth` location for `j` = 1 . . . `i`? Give your answer in terms of `i` (and `j` if required).
+4. Consider a random input sequence. What is the probability that in the `ith` iteration, `A[i]` will be inserted in the `jth` location for `j` = 1 ... `i`? Give your answer in terms of `i` (and `j` if required).

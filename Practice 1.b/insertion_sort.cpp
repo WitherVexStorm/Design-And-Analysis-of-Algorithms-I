@@ -80,20 +80,27 @@ int main() {
     }
 
     // Define structure to map array element with it's permutation details
-    struct array_element_permutations{
+    struct element_to_permutations {
         int a_val;
         int ** permutation_details = 0;
         int permutation_count[arr_length] = { 0 };
-    } array_element_permutations_arr[arr_length][arr_length];
+    };
+
+    struct index_to_element {
+        int i_val;
+        element_to_permutations permutations[arr_length];
+        int final_count_at_j[arr_length] = { 0 };
+    } array_element_permutations_arr[arr_length];
     // For each index for each permutation for each ai to be placed in j location
 
     // Initialise Permutation table
     for(int i = 0; i < arr_length; ++i) {
+        array_element_permutations_arr[i].i_val = i;
         for(int j = 0; j < arr_length; ++j) {
-            array_element_permutations_arr[i][j].a_val = arr[j];
-            array_element_permutations_arr[i][j].permutation_details = new int*[arr_length];
+            array_element_permutations_arr[i].permutations[j].a_val = arr[j];
+            array_element_permutations_arr[i].permutations[j].permutation_details = new int*[arr_length];
             for(int k = 0; k < arr_length; ++k) {
-                array_element_permutations_arr[i][j].permutation_details[k] = new int[total_permutations]{ 0 };
+                array_element_permutations_arr[i].permutations[j].permutation_details[k] = new int[total_permutations]{ 0 };
             }
         }
     }
@@ -115,24 +122,30 @@ int main() {
             int a_i = table[i][j];
             int a_i_inserted_at_j = insertion_algorithm(table[i], j);
             // a_i_inserted_at_j_array[a_i-1][a_i_inserted_at_j][a_i_inserted_at_j_counts[a_i_inserted_at_j]++] = i;
-            array_element_permutations& current_array_element_permutations = array_element_permutations_arr[j][indexed_arr[a_i]];
+            element_to_permutations& current_array_element_permutations = array_element_permutations_arr[j].permutations[indexed_arr[a_i]];
             // std::cout << current_array_element_permutations.a_val << " == " << a_i << "\n";
             current_array_element_permutations.permutation_details[a_i_inserted_at_j][current_array_element_permutations.permutation_count[a_i_inserted_at_j]++] = i;
             // std::cout << "Count: " << a_i_inserted_at_j << ", " << current_array_element_permutations.permutation_count[a_i_inserted_at_j] << " - " << current_array_element_permutations.permutation_details[a_i_inserted_at_j][0] << "\n";
+            array_element_permutations_arr[j].final_count_at_j[a_i_inserted_at_j] += 1;
         }
     }
-    std::cout << "\nTable of Insertions of A[i] at jth location:\n";
+    std::cout << "\nTable of Insertions of A[i] at jth location:";
     for(int i = 0; i < arr_length; ++i) {
-        std::cout << "\nFor i = " << i << ":\n";
+        std::cout << "\n\nFor i = " << i << ":\n\n";
         for(int j = 0; j < arr_length; ++j) {
-            std::cout << "For arr[i] = " << array_element_permutations_arr[i][j].a_val << "\n";
+            std::cout << "For arr[i] = " << array_element_permutations_arr[i].permutations[j].a_val << "\n";
             for(int k = 0; k < arr_length; ++k) {
-                std::cout << "For j = " << k << ": {" << (array_element_permutations_arr[i][j].permutation_count[k] > 0 ? " " : "  ");
-                for(int l = 0; l < array_element_permutations_arr[i][j].permutation_count[k]; ++l) {
-                    std::cout << array_element_permutations_arr[i][j].permutation_details[k][l] << ", ";
+                std::cout << "For j = " << k << ": {" << (array_element_permutations_arr[i].permutations[j].permutation_count[k] > 0 ? " " : "  ");
+                for(int l = 0; l < array_element_permutations_arr[i].permutations[j].permutation_count[k]; ++l) {
+                    std::cout << array_element_permutations_arr[i].permutations[j].permutation_details[k][l] << ", ";
                 }
                 std::cout << "\b\b }\n";
             }
+        }
+        // To calculate probability of a[i] being inserted at jth location for each permutation for each a[i] for each index 1 = 1...4
+        std::cout << "\nFinal counts for j:\n";
+        for(int j = 0; j < arr_length; ++j) {
+            std::cout << "For j = " << j << ": " << array_element_permutations_arr[i].final_count_at_j[j] << "\n";
         }
     }
 
@@ -140,9 +153,9 @@ int main() {
     for(int i = 0; i < arr_length; ++i) {
         for(int j = 0; i < arr_length; ++j) {
             for(int k = 0; k < arr_length; ++k) {
-                delete[] array_element_permutations_arr[i][j].permutation_details[k];
+                delete[] array_element_permutations_arr[i].permutations[j].permutation_details[k];
             }
-            delete[] array_element_permutations_arr[i][j].permutation_details;
+            delete[] array_element_permutations_arr[i].permutations[j].permutation_details;
         }
     }
     return 0;
