@@ -90,6 +90,8 @@ int main() {
         int i_val;
         element_to_permutations permutations[arr_length];
         int final_count_at_j[arr_length] = { 0 };
+        int comparisons_to_insert_at_j[arr_length] = { 0 };
+        int total_comparisons = 0;
     } array_element_permutations_arr[arr_length];
     // For each index for each permutation for each ai to be placed in j location
 
@@ -147,6 +149,20 @@ int main() {
         for(int j = 0; j < arr_length; ++j) {
             std::cout << "For j = " << j << ": " << array_element_permutations_arr[i].final_count_at_j[j] << "\n";
         }
+        // To calculate total comparisons
+        std::cout << "\nTotal Comparisons for j:\n";
+        for(int j = 0; j < arr_length; ++j) {
+            if(j <= i)
+            array_element_permutations_arr[i].comparisons_to_insert_at_j[j] = (i - j + 1) * array_element_permutations_arr[i].final_count_at_j[j];
+            array_element_permutations_arr[i].total_comparisons += array_element_permutations_arr[i].comparisons_to_insert_at_j[j];
+            std::cout << "For j = " << j << ": " << array_element_permutations_arr[i].comparisons_to_insert_at_j[j] << "\n";
+        }
+    }
+    
+    // To calculate average comparisons
+    std::cout << "\nAverage Comparisons for i:";
+    for(int i = 0; i < arr_length; ++i) {
+        std::cout << "\nFor i = " << i << ": " << array_element_permutations_arr[i].total_comparisons * 1.0 / total_permutations;
     }
 
     // Delete dynamic memory

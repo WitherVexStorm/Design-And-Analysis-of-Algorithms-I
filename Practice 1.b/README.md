@@ -37,6 +37,9 @@ For every `j` = 1 ... 4, list down the instances (the permutations) in which `A[
 ![](probabilities.drawio.svg)
 ![](answer3.drawio.svg)
   - a) For every `i` = 1, 4, Compute the average/expected number of comparisons performed by `Insertion Sort` to insert `A[i]`. Average is taken over all possible permutations.
+
+![](answer3.1.drawio.svg)
+
   - b) For every `i` = 1, 4, compute the probability that in the `ith` iteration, `A[i]` will be inserted in the `jth` location `j` = 1 ... 4?
   Make a 2d table `P` with `i` at the rows and `j` at the columns where `P[i, j]` stores the above probability.
 
