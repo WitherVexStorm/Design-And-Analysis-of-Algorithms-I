@@ -62,6 +62,8 @@ void generate_permutations(int table[][4], int possible_values[], int possible_v
 int main() {
     std::cout << "Using Array = {4, 8, 2, 7, 9, 1, 6, 5, 3, 0}\n\n";
     int arr[] = { 4, 1, 2, 3 };
+    // int arr[] = { 2, 1, 3 };
+    // int arr[] = {2, 5, 3, 7, 8, 1, 9, 6, 4};
     const int arr_length = sizeof(arr)/sizeof(int);
     std::cout << "Starting Insertion Sort: ...\n";
     insertion_sort(arr, arr_length);
@@ -156,6 +158,8 @@ int main() {
         for(int j = 0; j < arr_length; ++j) {
             if(j <= i)
             array_element_permutations_arr[i].comparisons_to_insert_at_j[j] = (i - j + 1) * array_element_permutations_arr[i].final_count_at_j[j];
+            if(j == 0)
+            array_element_permutations_arr[i].comparisons_to_insert_at_j[j] -= array_element_permutations_arr[i].final_count_at_j[j];
             array_element_permutations_arr[i].total_comparisons += array_element_permutations_arr[i].comparisons_to_insert_at_j[j];
             std::cout << "For j = " << j << ": " << array_element_permutations_arr[i].comparisons_to_insert_at_j[j] << "\n";
         }
@@ -170,11 +174,9 @@ int main() {
     
     // To calculate final probability table of a[i] being inserted at jth location for each permutation for each a[i] for each index 1 = 1...4
     std::cout << "\n\nFinal probabilities for j:\n\n" << std::left
-        << std::setw(26) << "| A[i] is inserted at j" 
-        << std::setw(12) << "| j = 0"
-        << std::setw(12) << "| j = 1"
-        << std::setw(12) << "| j = 2"
-        << std::setw(12) << "| j = 3";
+        << std::setw(26) << "| A[i] is inserted at j";
+    for(int i = 0; i < arr_length; ++i)
+    std::cout << "| j = " << std::setw(6) << i;
     for(int i = 0; i < arr_length; ++i) {
         std::cout << "\n| i = " << std::setw(20) << i;
         for(int j = 0; j < arr_length; ++j) {

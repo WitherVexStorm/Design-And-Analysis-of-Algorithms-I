@@ -5,6 +5,12 @@
 ---
 Programming assignment in C++ to analyse performance of sorting algorithms like `Insertion Sort`.
 
+## Steps
+
+1. Install `MinGW` with `g++` (compiler) and `gdb` (debugger).
+2. Build in terminal with command `build`.
+3. Build and Run in terminal with command `build_and_run`.
+
 ## Tasks
 ---
 

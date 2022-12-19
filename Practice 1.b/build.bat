@@ -1,0 +1,1 @@
+g++ -std=c++17 insertion_sort.cpp -o insertion_sort.exe
