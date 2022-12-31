@@ -3,6 +3,10 @@
 #include <utility>
 // #include <limits>
 
+int max(int a, int b) {
+    return a > b ? a : b;
+}
+
 struct interval {
     int start_time;
     int finish_time;
@@ -47,17 +51,47 @@ int print_interval_array(const std::string title, interval arr[], const int leng
     return max_finish_time;
 }
 
-// TODO: Apply max(d-tracks) solution
+// Apply iterative maximising algorithm
 int calculate_optimal(interval arr[], const int length, int& weighted_sum) {
-    int optimal_solution = 0, i = 0, j;
-    while(i < length) {
-        // Pick a[i] as part of optimal solution
-        optimal_solution += 1;
-        weighted_sum += arr[i].weight;
-        // Skip all a[j] that conflict with a[i]
-        for(j = i+1; j < length && arr[j].start_time < arr[i].finish_time; ++j);
-        // Update i to pick next a[i]
-        i = j;
+    int optimal_solution = 0;
+    struct {
+        int optimal_till_now = 0;
+        int last_compatible_interval = -1;
+    } optimal_solution_array[length];
+
+    // Find C[i] for every interval
+    for(int i = 0; i < length; ++i) {
+        for(int j = i-1; j >= 0; --j)
+        if(arr[j].finish_time <= arr[i].start_time) {
+            optimal_solution_array[i].last_compatible_interval = j;
+        }
+    }
+
+    // Find the optimal till i for each interval i
+    optimal_solution_array[0].optimal_till_now = arr[0].weight;
+    for(int i = 1; i < length; ++i) {
+        const int previous_compatible_optimal = optimal_solution_array[i].last_compatible_interval >= 0 
+        ? optimal_solution_array[optimal_solution_array[i].last_compatible_interval].optimal_till_now 
+        : 0;
+        optimal_solution_array[i].optimal_till_now = max(previous_compatible_optimal + arr[i].weight, optimal_solution_array[i-1].optimal_till_now);
+    }
+
+    // Set the global optimal as optimal of last interval
+    weighted_sum = optimal_solution_array[length-1].optimal_till_now;
+
+    // Find the number of intervals scheduled
+    int current_parent = length-1;
+    while(current_parent >= 0) {
+        const int previous_optimal_value = current_parent-1 >= 0 ? optimal_solution_array[current_parent-1].optimal_till_now : -1;
+
+        // If optimal different, picked this interval, jump to last compatible interval
+        if(previous_optimal_value != optimal_solution_array[current_parent].optimal_till_now) {
+            current_parent = optimal_solution_array[current_parent].last_compatible_interval;
+            optimal_solution += 1;
+        } else {
+        // If optimal same, did not pick this interval, check previous interval
+            current_parent = current_parent-1;
+        }
     }
     return optimal_solution;
 }
