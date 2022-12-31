@@ -35,15 +35,15 @@ int remove_at(T arr[], const int length, const int index) {
 }
 
 int pick(edge graph[], const int length, const int start_index, const int end_index) {
-    return end_index-1;
+    return start_index;
 }
 
 void apply_matching(edge graph[], int& length) {
     for(int i = 0, j; i < length; ++i) {
         // Pick graph[i] to be in matching
-        int start_index = i, end_index = i+1;
+        int start_index = i, end_index = i;
         // Pick all graph[i] where vertice from is identical
-        while(end_index < length && graph[end_index++].from == graph[start_index].from);
+        while(++end_index < length && graph[end_index].from == graph[start_index].from);
         // Pick one of these graph[i]
         int picked_i = pick(graph, length, start_index, end_index);
         // Remove conflicting graph[j]
@@ -57,7 +57,7 @@ void apply_matching(edge graph[], int& length) {
                 if(picked_i > j)
                 picked_i -= 1;
             }
-        }
+        }   
     }
 }
 
